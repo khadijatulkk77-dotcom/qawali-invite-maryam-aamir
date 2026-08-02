@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qawali Ki Shaam — Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon: #00674F;
+    --maroon-deep: #013D2F;
+    --gold: #cda349;
+    --gold-bright: #e8c874;
+    --cream: #f6ecd6;
+    --teal: #163832;
+    --ivory: #fbf5e6;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{
+    width:100%; min-height:100vh;
+    background: radial-gradient(ellipse at center, var(--maroon-deep) 0%, #001a13 75%);
+    overflow-x:hidden;
+    font-family:'Poppins', sans-serif;
+    color: var(--cream);
+  }
+
+  /* ===== STAGE / CURTAIN ===== */
+  .stage{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 40px 16px;
+  }
+
+  .curtain{
+    position:fixed;
+    top:0; height:100vh; width:52%;
+    background:
+      repeating-linear-gradient(90deg, var(--maroon) 0px, #0a7a5e 18px, var(--maroon) 36px),
+      linear-gradient(180deg, #0a7a5e, var(--maroon-deep));
+    z-index:50;
+    box-shadow: 0 0 60px rgba(0,0,0,0.6) inset;
+  }
+  .curtain::before{
+    content:"";
+    position:absolute; inset:0;
+    background: radial-gradient(circle at 50% 0%, rgba(205,163,73,0.25), transparent 60%);
+  }
+  .curtain::after{
+    content:"";
+    position:absolute; bottom:0; left:0; right:0; height:70px;
+    background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,0,0,0.25) 18px 20px);
+  }
+  .curtain-left{ left:0; transform-origin:left center; animation: openLeft 1.6s 0.4s cubic-bezier(.77,0,.18,1) forwards; animation-play-state: paused; border-right:3px solid var(--gold); }
+  .curtain-right{ right:0; transform-origin:right center; animation: openRight 1.6s 0.4s cubic-bezier(.77,0,.18,1) forwards; animation-play-state: paused; border-left:3px solid var(--gold); }
+  .curtain-tassels{
+    position:absolute; bottom:-4px; left:0; right:0; height:36px;
+    background-image: radial-gradient(circle, var(--gold) 3px, transparent 4px);
+    background-size: 22px 22px;
+    background-repeat: repeat-x;
+    opacity:.9;
+  }
+
+  @keyframes openLeft{ to{ transform: scaleX(0.02) skewY(1deg); opacity:0.15; } }
+  @keyframes openRight{ to{ transform: scaleX(0.02) skewY(-1deg); opacity:0.15; } }
+
+  /* ===== ORNATE RUG-STYLE BORDER FRAME ===== */
+  .rug-frame{
+    position:relative;
+    max-width: 660px;
+    width:100%;
+    padding: 26px;
+    border-radius: 6px;
+    background:
+      repeating-linear-gradient(45deg, var(--gold-bright) 0 3px, transparent 3px 14px),
+      repeating-linear-gradient(-45deg, var(--gold-bright) 0 3px, transparent 3px 14px),
+      linear-gradient(#0a0a0a, #0a0a0a);
+    background-blend-mode: normal;
+    opacity: 0.97;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 6px #0a0a0a, 0 0 0 8px var(--gold), 0 10px 40px rgba(0,0,0,0.6);
+    z-index: 10;
+  }
+  .rug-frame::before{
+    content:"";
+    position:absolute;
+    inset: 14px;
+    border: 1px solid var(--gold-bright);
+    border-radius: 3px;
+    pointer-events:none;
+  }
+
+  /* ===== CARD ===== */
+  .card{
+    position:relative;
+    width:100%;
+    text-align:center;
+    padding: 40px 26px 34px;
+    background: radial-gradient(ellipse at center, #023d2f 0%, var(--maroon-deep) 100%);
+    border-radius: 3px;
+    opacity:0;
+    transform: translateY(18px) scale(.97);
+    animation: revealCard 1s 1.7s ease forwards;
+    animation-play-state: paused;
+    z-index:10;
+    overflow: visible;
+  }
+  @keyframes revealCard{
+    to{ opacity:1; transform:translateY(0) scale(1); }
+  }
+
+  .frame{
+    position:absolute; inset:0;
+    border: 1.5px solid var(--gold);
+    border-radius: 4px;
+    animation: frameGlow 3.5s ease-in-out infinite;
+  }
+  @keyframes frameGlow{
+    0%,100%{ box-shadow: 0 0 0px rgba(205,163,73,0); }
+    50%{ box-shadow: 0 0 22px rgba(205,163,73,0.35); }
+  }
+  .frame::before, .frame::after{
+    content:"";
+    position:absolute; width:34px; height:34px;
+    border: 1.5px solid var(--gold);
+  }
+  .frame::before{ top:-9px; left:-9px; border-right:none; border-bottom:none; }
+  .frame::after{ bottom:-9px; right:-9px; border-left:none; border-top:none; }
+
+  /* ===== ORIGINAL QAWALI ILLUSTRATION ===== */
+  .qawali-illustration{
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 8px;
+    opacity:0;
+    animation: rowIn 1s ease forwards;
+    animation-delay: 1.9s;
+  }
+  .qawali-illustration svg{ width:100%; height:auto; display:block; }
+
+  .arch{
+    width: 92px; height:92px;
+    margin: 4px auto 6px;
+    position:relative;
+  }
+
+  .eyebrow{
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-size: 16px;
+    color: var(--gold-bright);
+    margin-bottom: 10px;
+  }
+
+  .urdu-title{
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-weight:700;
+    font-size: clamp(28px, 7vw, 46px);
+    line-height: 2;
+    padding: 8px 4px 4px;
+    margin-bottom: 6px;
+    overflow: visible;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 25%, #fff3d1 50%, var(--gold-bright) 75%, var(--gold) 100%);
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 18px rgba(232,200,116,0.25);
+    animation: shimmer 5s linear infinite;
+  }
+  @keyframes shimmer{
+    0%{ background-position: 0% center; }
+    100%{ background-position: -250% center; }
+  }
+
+  .sub-title{
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-size: clamp(19px, 4vw, 24px);
+    letter-spacing: 1px;
+    color: var(--cream);
+    margin-bottom: 26px;
+  }
+
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin: 22px auto;
+    width: 70%;
+  }
+  .divider .line{ flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .divider .diamond{
+    width:7px; height:7px;
+    background: var(--gold-bright);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px rgba(232,200,116,0.8);
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity:.6; transform:rotate(45deg) scale(.85);} 50%{ opacity:1; transform:rotate(45deg) scale(1.15);} }
+
+  .invite-line{
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-size: 22px;
+    line-height:2;
+    color: var(--ivory);
+    margin-bottom: 22px;
+    opacity:.92;
+  }
+
+  .section-title{
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-weight:700;
+    font-size: 26px;
+    color: var(--gold-bright);
+    margin: 4px 0 16px;
+    letter-spacing: 1px;
+  }
+
+  .details{
+    display:grid;
+    gap: 16px;
+    margin: 22px 0 4px;
+  }
+  .detail-row{
+    text-align:center;
+    max-width:100%;
+    font-size: 19px;
+    letter-spacing: .3px;
+    font-family:'Noto Nastaliq Urdu', serif;
+    line-height:2;
+    opacity:0;
+    transform: translateY(10px);
+    animation: rowIn .7s ease forwards;
+    animation-play-state: paused;
+  }
+  .details .detail-row:nth-child(1){ animation-delay: 2.1s; }
+  .details .detail-row:nth-child(2){ animation-delay: 2.25s; }
+  .details .detail-row:nth-child(3){ animation-delay: 2.4s; }
+  .details .detail-row:nth-child(4){ animation-delay: 2.55s; }
+  @keyframes rowIn{ to{ opacity:1; transform:translateY(0); } }
+  .detail-row .icon{ font-size:13px; color:var(--gold-bright); margin-inline-end:6px; }
+  .detail-row .label{ color: var(--gold-bright); font-weight:700; margin-inline-end:6px; }
+  .detail-row .value{ color: var(--cream); overflow-wrap: break-word; word-break: break-word; }
+
+  .map-wrap{
+    display:block;
+    width:70%;
+    max-width: 320px;
+    height: 100px;
+    margin: 22px auto 10px;
+    border-radius: 6px;
+    overflow:hidden;
+    border: 1.5px solid var(--gold);
+    opacity:0;
+    animation: rowIn .8s ease forwards;
+    animation-delay: 2.7s;
+    animation-play-state: paused;
+    transition: transform .3s ease;
+  }
+  .map-wrap svg{ width:100%; height:100%; display:block; }
+  .map-wrap:hover{ transform: scale(1.02); }
+  .map-link{
+    display:inline-block;
+    margin-bottom: 18px;
+    font-family:'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--gold-bright);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    opacity:0;
+    animation: rowIn .8s ease forwards;
+    animation-delay: 2.85s;
+    animation-play-state: paused;
+  }
+  .map-link:hover{ color: var(--ivory); border-color: var(--ivory); }
+
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    margin: 20px auto 6px;
+    max-width: 300px;
+  }
+  .timeline-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 14px;
+    font-family:'Noto Nastaliq Urdu', serif;
+    position:relative;
+  }
+  .timeline-row::before{
+    content:"";
+    position:absolute;
+    left: 50%;
+    top: -12px;
+    width:1px; height:12px;
+    background: linear-gradient(180deg, transparent, var(--gold));
+  }
+  .timeline-row:first-child::before{ display:none; }
+  .t-time{
+    color: var(--gold-bright);
+    font-size: 20px;
+    min-width: 88px;
+    text-align:left;
+  }
+  .t-dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 8px rgba(232,200,116,0.7);
+    flex-shrink:0;
+  }
+  .t-label{
+    color: var(--ivory);
+    font-size: 23px;
+    font-weight:700;
+    min-width: 100px;
+    text-align:right;
+  }
+
+  .rsvp{
+    margin-top: 28px;
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold-bright);
+    opacity:.85;
+  }
+
+  /* ===== AMBIENT: floating petals + sound waves ===== */
+  .petal{
+    position:fixed;
+    top:-30px;
+    font-size: 16px;
+    color: var(--gold);
+    opacity:.7;
+    z-index:5;
+    animation: fall linear infinite;
+    pointer-events:none;
+  }
+  @keyframes fall{
+    to{ transform: translateY(110vh) translateX(var(--drift,0)) rotate(360deg); opacity:0; }
+  }
+
+  .soundwave{
+    position:absolute;
+    bottom: 14px;
+    left:50%;
+    transform: translateX(-50%);
+    display:flex;
+    align-items:flex-end;
+    gap:4px;
+    height: 20px;
+    z-index:2;
+  }
+  .soundwave span{
+    width:3px;
+    background: var(--gold);
+    border-radius:2px;
+    animation: bar 1.2s ease-in-out infinite;
+  }
+  .soundwave span:nth-child(1){ height:6px; animation-delay:0s; }
+  .soundwave span:nth-child(2){ height:14px; animation-delay:.15s; }
+  .soundwave span:nth-child(3){ height:20px; animation-delay:.3s; }
+  .soundwave span:nth-child(4){ height:10px; animation-delay:.45s; }
+  .soundwave span:nth-child(5){ height:16px; animation-delay:.6s; }
+  @keyframes bar{ 0%,100%{ transform: scaleY(.4);} 50%{ transform: scaleY(1);} }
+
+  @media (max-width: 480px){
+    .card{ padding: 34px 16px 28px; }
+    .rug-frame{ padding: 16px; }
+    .rug-frame::before{ inset: 8px; }
+  }
+
+  /* ===== MUSIC TOGGLE BUTTON ===== */
+  .music-btn{
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #0a7a5e, var(--maroon-deep));
+    border: 1.5px solid var(--gold);
+    box-shadow: 0 0 14px rgba(0,0,0,0.5), 0 0 0 2px rgba(205,163,73,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index: 60;
+    transition: transform .25s ease, box-shadow .25s ease;
+    opacity:0;
+    animation: rowIn .8s ease forwards;
+    animation-delay: 2.3s;
+  }
+  .music-btn:hover{ transform: scale(1.08); box-shadow: 0 0 20px rgba(232,200,116,0.4); }
+  .music-btn svg{ width:20px; height:20px; }
+  .music-btn .bars{ display:none; align-items:flex-end; gap:2.5px; height:16px; }
+  .music-btn .bars span{
+    width:3px; background: var(--gold-bright); border-radius:2px;
+    animation: bar 1s ease-in-out infinite;
+  }
+  .music-btn .bars span:nth-child(1){ height:6px; animation-delay:0s; }
+  .music-btn .bars span:nth-child(2){ height:16px; animation-delay:.15s; }
+  .music-btn .bars span:nth-child(3){ height:10px; animation-delay:.3s; }
+  .music-btn.playing .icon-play{ display:none; }
+  .music-btn.playing .bars{ display:flex; }
+
+  body.opened .curtain-left,
+  body.opened .curtain-right,
+  body.opened .card,
+  body.opened .detail-row,
+  body.opened .map-wrap,
+  body.opened .map-link,
+  body.opened .music-btn{
+    animation-play-state: running;
+  }
+
+  /* ===== TAP-TO-OPEN STAMP ===== */
+  .tap-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(ellipse at center, var(--maroon-deep) 0%, #001a13 80%);
+    cursor: pointer;
+    transition: opacity .6s ease;
+  }
+  .tap-overlay.dismissed{
+    opacity: 0;
+    pointer-events: none;
+  }
+  .stamp{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 14px;
+  }
+  .stamp-seal{
+    width: 130px;
+    height: 130px;
+    animation: stampPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes stampPulse{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.06); }
+  }
+  .stamp-text{
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-size: 22px;
+    color: var(--gold-bright);
+    letter-spacing: .5px;
+  }
+  .stamp-subtext{
+    font-family:'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity:.8;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .stamp-seal{ animation: none !important; }
+    .curtain-left, .curtain-right, .card, .petal, .divider .diamond, .soundwave span, .urdu-title, .frame, .detail-row, .map-wrap, .map-link, .music-btn{
+      animation: none !important;
+    }
+    .curtain-left{ transform: scaleX(0.02); opacity:.15; }
+    .curtain-right{ transform: scaleX(0.02); opacity:.15; }
+    .card{ opacity:1; transform:none; }
+    .detail-row{ opacity:1; transform:none; }
+    .map-wrap, .map-link{ opacity:1; }
+    .urdu-title{ color: var(--gold-bright); background:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="tap-overlay" id="tapOverlay">
+    <div class="stamp">
+      <svg class="stamp-seal" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="80" r="70" fill="none" stroke="#cda349" stroke-width="2" stroke-dasharray="4 5"/>
+        <circle cx="80" cy="80" r="58" fill="none" stroke="#e8c874" stroke-width="1.4"/>
+        <circle cx="80" cy="80" r="52" fill="#013D2F" stroke="#cda349" stroke-width="1"/>
+        <circle cx="80" cy="80" r="30" fill="none" stroke="#cda349" stroke-width="1" opacity="0.6"/>
+        <text x="66" y="90" font-family="'Noto Nastaliq Urdu', serif" font-size="30" fill="#e8c874" text-anchor="middle">ع</text>
+        <path d="M78 66 L82 66 L82 94 L78 94 Z" fill="#cda349" transform="rotate(45 80 80)" opacity="0.9"/>
+        <text x="94" y="90" font-family="'Noto Nastaliq Urdu', serif" font-size="30" fill="#e8c874" text-anchor="middle">م</text>
+      </svg>
+      <div class="stamp-text" dir="rtl" lang="ur">ٹیپ کریں</div>
+      <div class="stamp-subtext">tap to open</div>
+    </div>
+  </div>
+
+  <div class="curtain curtain-left"><div class="curtain-tassels"></div></div>
+  <div class="curtain curtain-right"><div class="curtain-tassels"></div></div>
+
+  <audio id="qawaliAudio" src="qawali_song.mp3" preload="auto" loop></audio>
+  <button class="music-btn" id="musicBtn" aria-label="Toggle qawali music" title="Qawali chalayein">
+    <svg class="icon-play" viewBox="0 0 24 24" fill="none">
+      <path d="M8 5v14l11-7L8 5z" fill="#e8c874"/>
+    </svg>
+    <span class="bars"><span></span><span></span><span></span></span>
+  </button>
+
+  <div class="stage">
+    <div class="rug-frame">
+    <div class="card">
+      <div class="frame"></div>
+
+      <div class="eyebrow">آپ کی تشریف آوری کی گزارش ہے</div>
+      <div class="urdu-title">قوّالی کی شام</div>
+      <div class="sub-title" dir="rtl" lang="ur">سُروں اور محبت کی ایک محفل</div>
+
+      <p class="invite-line" dir="rtl" lang="ur">
+        رنگ، خوشبو اور سُروں کی اِس محفل میں<br>
+        آپ کی شرکت اِس شام کو مکمل کرے گی
+      </p>
+
+      <div class="detail-row" dir="rtl" lang="ur" style="margin-bottom:20px;">
+        <span class="value" style="font-family:'Noto Nastaliq Urdu', serif; font-size:26px; color:var(--gold-bright);">مریم شکیل و محمد عامر خان</span>
+      </div>
+
+      <div class="divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+      <div class="details" dir="rtl" lang="ur">
+        <div class="detail-row"><span class="icon">◆</span><span class="label">تاریخ:</span><span class="value">15 اگست، بروزِ ہفتہ</span></div>
+        <div class="detail-row"><span class="icon">◆</span><span class="label">مقام:</span><span class="value">گرینڈ حیات<br>جوہر ہل روڈ، بلاک ۱، گلستانِ جوہر، کراچی</span></div>
+      </div>
+
+      <a class="map-wrap" href="https://www.google.com/maps/search/?api=1&query=Grand+Hyatt+Johar+Hill+Rd+Block+1+Gulistan-e-Johar+Karachi" target="_blank" rel="noopener">
+        <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#013D2F"/>
+          <path d="M0 30 H400 M0 70 H400 M0 110 H400 M0 150 H400" stroke="#0a7a5e" stroke-width="1" opacity="0.5"/>
+          <path d="M40 0 V180 M110 0 V180 M180 0 V180 M250 0 V180 M320 0 V180 M390 0 V180" stroke="#0a7a5e" stroke-width="1" opacity="0.5"/>
+          <path d="M0 95 Q100 60 180 95 T400 85" stroke="#cda349" stroke-width="2.5" fill="none" opacity="0.55"/>
+          <path d="M60 0 Q90 90 60 180" stroke="#cda349" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <path d="M330 0 Q300 90 340 180" stroke="#cda349" stroke-width="1.5" fill="none" opacity="0.4"/>
+          <circle cx="120" cy="55" r="10" fill="#0a7a5e" opacity="0.6"/>
+          <circle cx="290" cy="130" r="14" fill="#0a7a5e" opacity="0.6"/>
+          <circle cx="250" cy="45" r="7" fill="#0a7a5e" opacity="0.6"/>
+          <g transform="translate(200,80)">
+            <circle cx="0" cy="0" r="20" fill="#cda349" opacity="0.18">
+              <animate attributeName="r" values="14;26;14" dur="2.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M0 -20 C10 -20 17 -13 17 -3 C17 10 0 24 0 24 C0 24 -17 10 -17 -3 C-17 -13 -10 -20 0 -20 Z" fill="#e8c874" stroke="#013D2F" stroke-width="1"/>
+            <circle cx="0" cy="-3" r="5.5" fill="#013D2F"/>
+          </g>
+        </svg>
+      </a>
+      <a class="map-link" dir="rtl" lang="ur"
+         href="https://www.google.com/maps/search/?api=1&query=Grand+Hyatt+Johar+Hill+Rd+Block+1+Gulistan-e-Johar+Karachi"
+         target="_blank" rel="noopener">نقشے پر مقام دیکھیں ↗</a>
+
+      <div class="timeline" dir="rtl" lang="ur">
+        <div class="timeline-row"><span class="t-time">9:00 بجے</span><span class="t-dot"></span><span class="t-label">طعام</span></div>
+        <div class="timeline-row"><span class="t-time">10:00 بجے</span><span class="t-dot"></span><span class="t-label">قوّالی</span></div>
+      </div>
+
+      <div class="soundwave"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    const audio = document.getElementById('qawaliAudio');
+    const musicBtn = document.getElementById('musicBtn');
+    const tapOverlay = document.getElementById('tapOverlay');
+
+    audio.addEventListener('play', () => musicBtn.classList.add('playing'));
+    audio.addEventListener('pause', () => musicBtn.classList.remove('playing'));
+
+    function startQawali(){
+      if (audio.currentTime < 136) audio.currentTime = 136;
+      audio.play().catch(() => {});
+    }
+
+    function scatterPetals(){
+      const symbols = ['✦','♪','❀'];
+      for(let i=0;i<16;i++){
+        const p = document.createElement('div');
+        p.className = 'petal';
+        p.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+        p.style.left = Math.random()*100 + 'vw';
+        p.style.setProperty('--drift', (Math.random()*80-40)+'px');
+        p.style.animationDuration = (7 + Math.random()*6) + 's';
+        p.style.animationDelay = (Math.random()*8) + 's';
+        p.style.fontSize = (12 + Math.random()*10) + 'px';
+        document.body.appendChild(p);
+      }
+    }
+
+    tapOverlay.addEventListener('click', () => {
+      document.body.classList.add('opened');
+      tapOverlay.classList.add('dismissed');
+      startQawali();
+      scatterPetals();
+    }, { once:true });
+
+    musicBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (audio.paused){
+        startQawali();
+      } else {
+        audio.pause();
+      }
+    });
+  </script>
+</body>
+</html>
