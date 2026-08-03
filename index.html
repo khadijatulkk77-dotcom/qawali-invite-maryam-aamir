@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qawali Ki Shaam — Invitation</title>
+<title>Mehfil-e-Sama aur Rasm-e-Hina — Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -277,37 +277,37 @@
   .map-link:hover{ color: var(--ivory); border-color: var(--ivory); }
 
   .timeline{
-    display:flex;
-    flex-direction:column;
-    gap: 14px;
-    margin: 20px auto 6px;
-    max-width: 300px;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin: 22px auto 6px;
+    max-width: 320px;
   }
   .timeline-row{
     display:flex;
+    flex-direction:column;
     align-items:center;
-    justify-content:space-between;
-    gap: 14px;
+    gap: 8px;
     font-family:'Noto Nastaliq Urdu', serif;
     position:relative;
+    padding: 2px 8px;
   }
-  .timeline-row::before{
+  .timeline-row:not(:first-child)::before{
     content:"";
     position:absolute;
-    left: 50%;
-    top: -12px;
-    width:1px; height:12px;
-    background: linear-gradient(180deg, transparent, var(--gold));
+    left:0;
+    top:8px;
+    bottom:8px;
+    width:1px;
+    background: linear-gradient(180deg, transparent, var(--gold), transparent);
   }
-  .timeline-row:first-child::before{ display:none; }
   .t-time{
     color: var(--gold-bright);
-    font-size: 20px;
-    min-width: 88px;
-    text-align:left;
+    font-size: 16px;
+    text-align:center;
   }
   .t-dot{
-    width:7px; height:7px;
+    width:6px; height:6px;
     border-radius:50%;
     background: var(--gold-bright);
     box-shadow: 0 0 8px rgba(232,200,116,0.7);
@@ -315,10 +315,9 @@
   }
   .t-label{
     color: var(--ivory);
-    font-size: 23px;
+    font-size: 19px;
     font-weight:700;
-    min-width: 100px;
-    text-align:right;
+    text-align:center;
   }
 
   .rsvp{
@@ -328,6 +327,18 @@
     font-size: 15px;
     color: var(--gold-bright);
     opacity:.85;
+  }
+
+  .shayari{
+    margin-top: 22px;
+    font-family:'Noto Nastaliq Urdu', serif;
+    font-size: 21px;
+    line-height: 2.1;
+    color: var(--gold-bright);
+    opacity: 0;
+    animation: rowIn .8s ease forwards;
+    animation-delay: 2.9s;
+    animation-play-state: paused;
   }
 
   /* ===== AMBIENT: floating petals + sound waves ===== */
@@ -415,6 +426,7 @@
   body.opened .detail-row,
   body.opened .map-wrap,
   body.opened .map-link,
+  body.opened .shayari,
   body.opened .music-btn{
     animation-play-state: running;
   }
@@ -515,8 +527,7 @@
       <div class="frame"></div>
 
       <div class="eyebrow">آپ کی تشریف آوری کی گزارش ہے</div>
-      <div class="urdu-title">قوّالی کی شام</div>
-      <div class="sub-title" dir="rtl" lang="ur">سُروں اور محبت کی ایک محفل</div>
+      <div class="urdu-title">محفلِ سماع اور رسمِ حنا</div>
 
       <p class="invite-line" dir="rtl" lang="ur">
         رنگ، خوشبو اور سُروں کی اِس محفل میں<br>
@@ -560,9 +571,17 @@
          target="_blank" rel="noopener">نقشے پر مقام دیکھیں ↗</a>
 
       <div class="timeline" dir="rtl" lang="ur">
-        <div class="timeline-row"><span class="t-time">9:00 بجے</span><span class="t-dot"></span><span class="t-label">طعام</span></div>
+        <div class="timeline-row"><span class="t-time">9:00 بجے</span><span class="t-dot"></span><span class="t-label">رسم</span></div>
+        <div class="timeline-row"><span class="t-time">9:30 بجے</span><span class="t-dot"></span><span class="t-label">طعام</span></div>
         <div class="timeline-row"><span class="t-time">10:00 بجے</span><span class="t-dot"></span><span class="t-label">قوّالی</span></div>
       </div>
+
+      <div class="divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+      <p class="shayari" dir="rtl" lang="ur">
+        دو دلوں کا ملن ہے، سُروں کی ہے بارات<br>
+        مبارک ہو یہ بندھن، مبارک ہو یہ رات
+      </p>
 
       <div class="soundwave"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
